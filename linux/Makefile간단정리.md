@@ -62,4 +62,4 @@ c : 아카이브(라이브러리 파일) 생성, 존재하지 않는 아카이�
 $@ : target
 $< : 열거된 depend 중 가장 왼쪽의 depend 파일
 $^ : depend 전체 파일
-$? : target과 depend의 변경 날짜를 비교해 변경된 depend만 선택하는 매크로이다.
+$? : target과 depend의 변경 날짜를 비교해 변경된 depend만 선택하는 매크로이다
