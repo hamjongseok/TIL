@@ -79,8 +79,6 @@ int ft_printf(const char *fmt, ...) //fmt는 format으로 서식이라는뜻
         if (*fmt == '%') //fmt가 %라면
         {
             fmt++; //++을 해서 다음 문자를 확인하고
-            if (*fmt == 0)
-                break;
             result += ft_setform(fmt, &ap); //setform함수로넘어가고
         }                                  //result에다가 반환값저장
         else //그게아니라면 하나씩 다찍어낸다.
@@ -95,22 +93,78 @@ int ft_printf(const char *fmt, ...) //fmt는 format으로 서식이라는뜻
 }
 ```
 
-- if 중간에 예외처리한이유
+---
+
+## ft_setform함수, %c
+
+- if문을 통해 서식지정자마다 정해진 함수로 들어가는 함수
 
 ```c
- if (*fmt == 0)
-            break;
- %가 끝이라면 마지막에 널을 검사하므로 문제가 생길수도있어 추가함
+ int ft_setform(const char *fmt, va_list *ap)
+{
+    char c;
+
+    c = 0;
+    if (*fmt == '%') //%라면 바로 %찍고 리턴
+        return (write(1, "%", 1));
+    if (*fmt == 'c') //c 라면
+    {
+        c = va_arg(*ap, int); //ap를 int타입으로 읽는다.
+        write(1, &c, 1); //c  바로찍어냄
+        return (1);
+    }
+    else if (*fmt == 's')
+        return (ft_print_s(ap));
+    else if (*fmt == 'd' || *fmt == 'i')
+        return (ft_print_di(ap));
+    else if (*fmt == 'u')
+        return (ft_print_u(ap));
+    else if (*fmt == 'x')
+        return (ft_print_x(ap));
+    else if (*fmt == 'X')
+        return (ft_print_xx(ap));
+    else if (*fmt == 'p')
+        return (ft_print_p(ap));
+    return (0); //위에 해당이안되면 0리턴
+}
 
 ```
+
+### char 자료형과 int 자료형
+
+```
+int num = va_arg(ap, int);
+char ch = va_arg(ap, int);
+```
+
+- %d, %c같이 int나 char형의 값을 읽어올 때 동일하게 int형을 사용했다.
+- int형은 4byte char형은 1byte인데 왜 똑같이 사용하는 걸까?
+  - va_list 자료형이 내부적으로 가르키는 값은 4byte씩 나뉘어져 있어서 char, int 자료형을 동일하게 사용한다.
+  - va_list 자료형은 포인터 변수이고, 포인터 변수는 4byte이기 때문에 가변 인자들이 4byte씩 나뉘어져있다고 생각한다.
 
 ---
 
-## ft_setform함수
+## %s 구현
 
 ```c
- if (*fmt == 0)
-            break;
- %가 끝이라면 마지막에 널을 검사하므로 문제가 생길수도있어 추가함
+ int ft_print_s(va_list *ap)
+{
+    int c;
+    char *str;
 
+    c = 0;
+    str = (char *)va_arg(*ap, char *); //char * 크기만큼 값을 가져오고 그 크기만큼 이동, str에 넣음
+    if (!str) //str이 비어있다면 예외처리 (null)출력해야한다.
+        return (write(1, "(null)", 6));
+    while (*str) //str 끝까지
+    {
+        write(1, str, 1);
+        str++;
+        c++; //출력개수
+    }
+    return (c);
+}
 ```
+
+- ap => 주소값을 이용해서 사용하는것이기때문에 포인터인채로 넘겨야한다.
+- 비어있다면 (null)출력 예외처리
