@@ -300,44 +300,29 @@ unsigned , 정답은 없다
 unsigned 정수형중 void * 의 사이즈보다 큰 타입이면 된다.
 ```
 
-- 출력 값이 `'\0'`이 넘어와도 출력을 하고 카운트를 해야합니다.
-- 출력은 안되지만 카운트는 1이 되어야한다.
-
-### char 자료형과 int 자료형
+- 해당 코드
 
 ```
-int num = va_arg(ap, int);
-char ch = va_arg(ap, int);
-```
-
-- %d, %c같이 int나 char형의 값을 읽어올 때 동일하게 int형을 사용했다.
-- int형은 4byte char형은 1byte인데 왜 똑같이 사용하는 걸까?
-  - va_list 자료형이 내부적으로 가르키는 값은 4byte씩 나뉘어져 있어서 char, int 자료형을 동일하게 사용한다.
-  - va_list 자료형은 포인터 변수이고, 포인터 변수는 4byte이기 때문에 가변 인자들이 4byte씩 나뉘어져있다고 생각한다.
-
----
-
-## %s 구현
-
-```c
- int ft_print_s(va_list *ap)
+int ft_print_p(va_list *ap)
 {
-    int c;
+    size_t res;
     char *str;
+    int i;
 
-    c = 0;
-    str = (char *)va_arg(*ap, char *); //char * 크기만큼 값을 가져오고 그 크기만큼 이동, str에 넣음
-    if (!str) //str이 비어있다면 예외처리 (null)출력해야한다.
-        return (write(1, "(null)", 6));
-    while (*str) //str 끝까지
+    i = 0;
+    res = (size_t)va_arg(*ap, void *);
+    str = ft_restohex(res);
+    if (!str)
+        return (-1);
+    write(1, "0x", 2);
+    while (str[i])
     {
-        write(1, str, 1);
-        str++;
-        c++; //출력개수
+        write(1, str + i, 1);
+        i++;
     }
-    return (c);
+    free(str);
+    return (i + 2);
 }
 ```
 
-- ap => 주소값을 이용해서 사용하는것이기때문에 포인터인채로 넘겨야한다.
-- 비어있다면 (null)출력 예외처리
+---
