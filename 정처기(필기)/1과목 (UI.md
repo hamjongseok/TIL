@@ -37,19 +37,19 @@ UI는 어떻게 발전해 갔는가
 
 키보드로 명령어를 입력했다.
 
-1. GUI (Graphical User Interface)
+2. GUI (Graphical User Interface)
 
 마우스로 조작했다.
 
-1. NUI (Natural User Interface)
+3. NUI (Natural User Interface)
 
 사용자의 말이나 행동으로 기기를 조작
 
-1. VUI (Voice user interface)
+4. VUI (Voice user interface)
 
 사람의 음성으로 기기를 조작하는 인터페이스
 
-1. OUI (Organic User Interface)
+5. OUI (Organic User Interface)
 
 모든 사물과 사용자 간의 상호작용을 위한 인터페이스
 ```
