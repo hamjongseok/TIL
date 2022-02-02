@@ -10,10 +10,11 @@
 
 ---
 
-- Virtualbox or UTM 사용 가능
-- 서버 셋업하기. CUI로 미니멈한 서버를 세팅
-- 설치는 최소한으로 진행되어야 한다.(GUI 설치 금지!)
-- OS로는 Debian의 최신 stable 버전이나 CentOS의 최신 stable 중 하나를 선택해라.
+- ~~Virtualbox or UTM 사용 가능
+  (virtualbox 사용)~~
+- ~~서버 셋업하기. CUI로 미니멈한 서버를 세팅~~
+- ~~설치는 최소한으로 진행되어야 한다.(GUI 설치 금지!)~~
+- ~~OS로는 Debian의 최신 stable 버전이나 CentOS의 최신 stable 중 하나를 선택해라. (Debian)~~
 - CentOS 에서 kdump 셋업은 필요하지 않다. SElinux는 필수 AppArmor for Debian도 필수
 - LVM를 사용해서 암호화된 파티션을 2개 이상 생성해야 한다.
 
