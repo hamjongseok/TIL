@@ -5,6 +5,7 @@
 - 가상머신이란?
 - 물리적으로 1대인 컴퓨터에서 마치 여러 대의 컴퓨터로 운영하는 것과 같은 환경을 제공해주는 소프트웨어
 - 가상 머신의 종류는 프로세스 가상 머신과 시스템 가상 머신이 있다.
+- 과제에서는 시스템 가상 머신에 해당이된다.
 - 가상머신상에서 `운영체제` 설치가능.
 
 ```c
@@ -35,15 +36,58 @@ virtual Box로 하는게 더편할것 같아 클러스터에 나가서 과제 �
     - RHEL(레드헷 엔터프라이즈 리눅스)에서 파생된 리눅스의 배포판중 하나
 
 ```c
-데비안을 선택한 이유?
+리눅스 란 ?
+
+쉽게 말하자면, 윈도우와 같은 하나의 독자적인 컴퓨터 운영체제(OS)이다.
+(OS란, 컴퓨터의 하드웨어와 소프트웨어를 제어하여, 사용자가 컴퓨터를 쓸 수 있게 만들어주는 프로그램을 말한다.)
+
+리눅스는 공개 소프트웨어라서 그룹이나 회사등에서 커널소스를 받아 OS를 직접제작하여 사용된다.
+
+배포된 리눅스의 종류
+
+데비안 (Debian)
+패키지설치 및 업그레이드가 단순하여 간편한 장점이 있음.
+안정성과 보안에 중점을 두고 있음
+
+우분투 (ubuntu)
+Debian을 기반으로 하여 만들어짐.
+windows에 익숙해진 유저들이 리눅스를 쉽게 접할 수 있도록 만들어진 운영체제.
+
+레드 햇 (red hat)
+클라우드 인프라구축이 쉽고 간편함.
+
+안드로이드 (android)
+구글에서 리눅스를 기반으로 개발한 운영체제로, c, c++, python, java등의 프로그래밍 언어를 지원함.
 ```
 
-- CentOS 에서 kdump 셋업은 필요하지 않다. SElinux는 필수 AppArmor for Debian도 필수
+데비안 설치과정
+
+- GUI 설치안함
+
+- Debian은 AppArmor, CentOS는 SELinux를 시작 시에 구동 ✔️
+
 - LVM를 사용해서 암호화된 파티션을 2개 이상 생성해야 한다.
 
 ---
 
-![image description](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/0b0587b6-306b-4f41-99c6-e61a69423256/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2022-01-29_%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE_12.05.02.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220129%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220129T034741Z&X-Amz-Expires=86400&X-Amz-Signature=8a62458682a19d2d563c8dbc888c4909c26a5d1c8c94ceddf9715931628b8c10&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA%25202022-01-29%2520%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE%252012.05.02.png%22&x-id=GetObject)
+## 선행지식
+
+#### AppArmor & SELinux
+
+- 모두 Security framework이며, LSM(Linux Security Module)을 기반으로 구현됨
+- AppArmor
+  - Application Armor의 약자
+  - 시스템 관리자가 프로그램 프로필 별로 프로그램의 역량을 제한할 수있게 해주는 리눅스 커널 보안 모듈이다.
+
+```c
+커널이란 ?
+
+ 하드웨어와 응용 프로그램 사이에서 인터페이스를 제공하여 응용 프로그램이 하드웨어에서부터 오는 자원을 관리하고 사용 할 수 있게 해준다.
+ 구체적으로 말하면, 커널이란 운영체제(OS)에서 가장 중요한 구성요소로서, 입출력을 관리하고 소프트웨어로부터 요청 (System Call)을 컴퓨터에 있는 하드웨어(CPU, 메모리, 저장장치, 모니터)가 처리할 수 있도록 요청(System Call)을 변환하는 역할을 한다.
+( User는 Shell을 이용하여 Kernel을 통해 하드웨어를 사용 할 수 있다. )
+
+출처 : http://itnovice1.blogspot.com/2019/08/blog-post_83.html
+```
 
 ---
 
