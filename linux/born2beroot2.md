@@ -2,18 +2,42 @@
 
 ## **sudo**
 
+- Super User Do의 줄임말
 - UNIX에서는 root계정만이 모든 명령을 실행, 특정한 중요작업을 수행할수있다.
 - sudo명령어를 통해 다른 일반 사용자가 일부 명령을 실행하고 시스템 작업을 수행할 수 있도록 허용해준다.
--
 
 ---
 
 ```c
 sudo 관련 명령어
 
-apt install sudo
+dpkg -l sudo (설치여부 확인)
+apt install sudo (수도설치)
+su - (root계정으로 이동)
+sudo (명령어)
+일반유저가 root권한으로 명령어 실행
+su (계정명)
+현재 유저를 로그아웃 하지않은 채로 다른 사용자 계정으로 전환
+visudo (sudoer파일 접근)
 
 ```
+
+---
+
+- 비밀번호 오류는 3번으로 제한됩니다. ⭕️
+
+  - `passwd_tries=3`
+
+- sudo를 사용할 때, 잘못 된 암호로 인한 오류가 발생할 경우 커스텀 메시지를 표시합니다. ⭕️
+
+  - `badpass_message=""`
+
+- sudo를 사용할 때의 모든 입출력 동작은 기록되어야 합니다. 로그 파일은 `/var/log/sudo/` 폴더에 저장됩니다. ⭕️
+  - `iolog_dir="/var/log/sudo/"`
+- 보안 문제 관련해서, TTY 모드를 활성화합니다.⭕️
+  - `requiretty`
+- 보안 문제 관련해서, sudo에서 사용할 수 있는 경로는 제한됩니다. ⭕️
+  - `secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin"`
 
 ## Virtual Box 설치 및 Debian설치
 
