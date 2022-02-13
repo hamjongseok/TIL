@@ -149,8 +149,9 @@ Guidelines
   strongly encouraged to review together the work that was turned in, in order
   to identify any mistakes that shouldn't be repeated in the future.
 
-Preliminaries
-If cheating is suspected, the evaluation stops here. Use the "Cheat" flag to report it. Take this decision calmly, wisely, and please, use this button with caution.
+Preliminaries 사전준비
+
+- If cheating is suspected, the evaluation stops here. Use the "Cheat" flag to report it. Take this decision calmly, wisely, and please, use this button with caution.
 
 Preliminary tests
 
@@ -162,12 +163,13 @@ Preliminary tests
   station.
 
 General instructions
-General instructions
 
 - During the defense, as soon as you need help to verify a point, the student
   evaluated must help you.
-- Ensure that the "signature.txt" file is present at the root of the cloned
-  repository.
+- Ensure that the "signature.txt" file is present at the root of the cloned repository.
+
+  - 복제된 리포지토리의 루트에 "signature.txt" 파일이 있는지 확인합니다.
+
 - Check that the signature contained in "signature.txt" is identical
   to that of the ".vdi" file of the virtual machine to be evaluated. A simple
   "diff" should allow you to compare the two signatures. If necessary, ask the
@@ -181,29 +183,48 @@ General instructions
 Mandatory part
 The project consists of creating and configuring a virtual machine following strict rules. The student being evaluated will have to help you during the defense. Make sure that all of the following points are observed.
 
+signature.txt에 포함된 서명이 평가할 가상 시스템의 ".vdi" 파일의 서명과 동일한지 확인합니다.
+간단한 "diff"로 두 서명을 비교할 수 있습니다. 필요한 경우 평가 중인 학생에게
+".vdi" 파일이 어디에 있는지 묻습니다.
+
 Project overview
 
 - The student being evaluated should explain to you simply:
+- 간단히 설명할수있어야한다.
 - How a virtual machine works.
+- 어떻게 가상머신이 작동하는지 ?
 - Their choice of operating system.
+- 선택한 운영 체제.
 - The basic differences between CentOS and Debian.
+- CentOS와 데비안의 기본적인 차이점.
 - The purpose of virtual machines.
+- 가상 시스템의 용도
 - If the evaluated student chose CentOS: what SELinux and DNF are.
 - If the evaluated student chose Debian: the difference between
   aptitude and apt, and what APPArmor is.
-  During the defense, a script must display information all
+  - 만약 평가된 학생이 데비안: Apparmor과 apt의 차이, 그리고 APPArmor가 무엇인지 ?
+- During the defense, a script must display information all
   every 10 minutes. Its operation will be checked in detail later.
   If the explanations are not clear, the evaluation stops here.
+- 스크립트에 정보가 모두 표시되어야 합니다. 10분마다
+
+---
 
 Simple setup
-Remember: Whenever you need help checking something, the student being evaluated
-should be able to help you.
+
+- Remember: Whenever you need help checking something, the student being evaluated should be able to help you.
 
 - Ensure that the machine does not have a graphical environment at launch.
-  A password will be requested before attempting to connect to this machine.
+- gui가 설치안되어있는지 확인
+- A password will be requested before attempting to connect to this machine.
+
+  - 이 컴퓨터에 연결을 시도하기 전에 암호가 필요합니다.
+
   Finally, connect with a user with the help of the student being evaluated.
   This user must not be root.
+
   Pay attention to the password chosen, it must follow the rules imposed in the subject.
+
 - Check that the UFW service is started with the help of the evaluator.
 - Check that the SSH service is started with the help of the evaluator.
 - Check that the chosen operating system is Debian or CentOS with the help of the evaluator.
