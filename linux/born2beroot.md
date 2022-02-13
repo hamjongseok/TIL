@@ -241,8 +241,12 @@ The subject requests that a user with the login of the student being evaluated i
 on the virtual machine. Check that it has been added and that it belongs to the
 "sudo" and "user42" groups.
 
+- user jham이 있는지 확인하고 그것들이 sudo와 user42에 속해있는지 확인
+
 Make sure the rules imposed in the subject concerning the password policy have been put in place by
 following the following steps.
+
+- 암호규칙이 제대로 되어있는지 확인
 
 First, create a new user. Assign it a password of your choice, respecting the subject rules. The
 student being evaluated must now explain to you how they were able to set up the rules requested
@@ -251,12 +255,15 @@ Normally there should be one or two modified files. If there is any problem, the
 
 - Now that you have a new user, ask the student being evaluated to create a group named "evaluating" in
   front of you and assign it to this user. Finally, check that this user belongs to the "evaluating" group.
+- 이제 새 사용자가 생겼으니 평가 대상 학생에게 앞에 "evaluating"이라는 그룹을 만들어
+  이 사용자에게 할당하도록 요청합니다. 마지막으로 이 사용자가 "evaluating" 그룹에 속하는지 확인합니다.
 
 - Finally, ask the student being evaluated to explain the advantages of this password policy, as well as the
   advantages and disadvantages of its implementation. Of course, answering that it is because the subject asks
   for it does not count.
-
-If something does not work as expected or is not clearly explained, the evaluation stops here.
+- 마지막으로, 평가 대상 학생에게 비밀번호 정책의 장점과 구현의 단점을 설명하도록 요청합니다.
+  물론 주체가 요구하기 때문이라고 대답하는 것은 중요하지 않다.
+- If something does not work as expected or is not clearly explained, the evaluation stops here.
 
 ---
 
@@ -264,8 +271,8 @@ Hostname and partitions
 Remember: Whenever you need help checking something, the student being evaluated
 should be able to help you.
 
-- Check that the hostname of the machine is correctly formatted as follows:
-  login42 (login of the student being evaluated).
+- Check that the hostname of the machine is correctly formatted as follows: login42 (login of the student being evaluated).
+- host이름이 42인지
 - Modify this hostname by replacing the login with yours, then restart the machine.
   If on restart, the hostname has not been updated, the evaluation stops here.
 - You can now restore the machine to the original hostname.
