@@ -231,10 +231,11 @@ Simple setup
   If something does not work as expected or is not clearly explained,
   the evaluation stops here.
 
+---
+
 User
 
-Remember: Whenever you need help checking something, the student being evaluated
-should be able to help you.
+Remember: Whenever you need help checking something, the student being evaluated should be able to help you.
 
 The subject requests that a user with the login of the student being evaluated is present
 on the virtual machine. Check that it has been added and that it belongs to the
@@ -256,6 +257,8 @@ Normally there should be one or two modified files. If there is any problem, the
   for it does not count.
 
 If something does not work as expected or is not clearly explained, the evaluation stops here.
+
+---
 
 Hostname and partitions
 Remember: Whenever you need help checking something, the student being evaluated
