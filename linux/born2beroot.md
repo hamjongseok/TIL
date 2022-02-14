@@ -268,26 +268,31 @@ Normally there should be one or two modified files. If there is any problem, the
 ---
 
 Hostname and partitions
-Remember: Whenever you need help checking something, the student being evaluated
-should be able to help you.
+
+- Remember: Whenever you need help checking something, the student being evaluated should be able to help you.
 
 - Check that the hostname of the machine is correctly formatted as follows: login42 (login of the student being evaluated).
 - host이름이 42인지
-- Modify this hostname by replacing the login with yours, then restart the machine.
-  If on restart, the hostname has not been updated, the evaluation stops here.
+- Modify this hostname by replacing the login with yours, then restart the machine. If on restart, the hostname has not been updated, the evaluation stops here.
+- 호스트이름을 바꾸고 (아무거나 바꾸라는건지 ?) 다시 시작했을때 호스트이름이 바뀌어야한다.
+
 - You can now restore the machine to the original hostname.
+- 이제 시스템을 원래 호스트 이름으로 복원할수있다 (꼭해야하는건가 ?)
 - Ask the student being evaluated how to view the partitions for this virtual machine.
 - Compare the output with the example given in the subject. Please note: if the
   student evaluated makes the bonuses, it will be necessary to refer to the bonus example.
+- 파티션 보여주고 서브젝트와 비교
+- This part is an opportunity to discuss the scores! The student being evaluated should
+  give you a brief explanation of how LVM works and what it is all about.
+- Lvm에 대한 설명, 동작원리
+- If something does not work as expected or is not clearly explained, the evaluation stops here.
 
-This part is an opportunity to discuss the scores! The student being evaluated should
-give you a brief explanation of how LVM works and what it is all about.
-If something does not work as expected or is not clearly explained,
-the evaluation stops here.
+---
 
 SUDO
-Remember: Whenever you need help checking something, the student being evaluated
-should be able to help you.
+
+- Remember: Whenever you need help checking something, the student being evaluated
+  should be able to help you.
 
 - Check that the "sudo" program is properly installed on the virtual machine.
 - The student being evaluated should now show assigning your new user to the "sudo" group.
@@ -299,6 +304,8 @@ should be able to help you.
   Finally, try to run a command via sudo. See if the file (s) in the "/var/log/sudo/" folder
   have been updated.
   If something does not work as expected or is not clearly explained, the evaluation stops here.
+
+---
 
 UFW
 Remember: Whenever you need help checking something, the student being evaluated
