@@ -291,38 +291,47 @@ Hostname and partitions
 
 SUDO
 
-- Remember: Whenever you need help checking something, the student being evaluated
-  should be able to help you.
+- Remember: Whenever you need help checking something, the student being evaluated should be able to help you.
 
 - Check that the "sudo" program is properly installed on the virtual machine.
+- sudo 설치되어있는지 확인
 - The student being evaluated should now show assigning your new user to the "sudo" group.
-- The subject imposes strict rules for sudo. The student being evaluated must first explain the
-  value and operation of sudo using examples of their choice.
+- 새사용자를 sudo그룹에 할당 시키는것을 보여줘라
+- The subject imposes strict rules for sudo. The student being evaluated must first explain the value and operation of sudo using examples of their choice.
   In a second step, it must show you the implementation of the rules imposed by the subject.
-- Verify that the "/var/log/sudo/" folder exists and has at least one file. Check the contents
-  of the files in this folder, You should see a history of the commands used with sudo.
-  Finally, try to run a command via sudo. See if the file (s) in the "/var/log/sudo/" folder
-  have been updated.
-  If something does not work as expected or is not clearly explained, the evaluation stops here.
+- sudo 규칙에 대해서 설명
+- Verify that the "/var/log/sudo/" folder exists and has at least one file. Check the contents of the files in this folder, You should see a history of the commands used with sudo.
+- "/var/log/sudo/" 폴더가 있고 파일이 하나 이상 있는지 확인합니다. 이 폴더의 파일 내용을 확인하십시오. sudo에 사용된 명령어의 기록이 표시됩니다.
+- Finally, try to run a command via sudo. See if the file (s) in the "/var/log/sudo/" folder have been updated.
+- sudo 명령을 실행해서 파일이 업데이트가 되는지 확인 시켜줘라
+- If something does not work as expected or is not clearly explained, the evaluation stops here.
 
 ---
 
 UFW
-Remember: Whenever you need help checking something, the student being evaluated
-should be able to help you.
+
+- Remember: Whenever you need help checking something, the student being evaluated should be able to help you.
 
 - Check that the "UFW" program is properly installed on the virtual machine.
+- UFW가 설치되어 있는지 확인
 - Check that it is working properly.
-- The student being evaluated should explain to you basically what UFW is and the
-  value of using it.
+- 정상적으로 작동 되는지 확인
+- The student being evaluated should explain to you basically what UFW is and the value of using it.
+- 평가 대상 학생은 기본적으로 UFW가 무엇인지, 그리고 UFW를 사용하는 가치에 대해 설명해야 합니다.
 - List the active rules in UFW. A rule must exist for port 4242.
+- UFW 활성규칙을 나열 ?, 포트 4242가 있어야한다. 라는거지 ?
 - Add a new rule to open port 8080. Check that this one has been added by listing the active rules.
+- 8080포트를 추가해서 확인 시켜라
 - Finally, delete this new rule with the help of the student being evaluated.
-  If something does not work as expected or is not clearly explained, the evaluation stops here.
+- 평가중인 학생의 도움을 받아서 이 규칙을 삭제해라 ?
+- If something does not work as expected or is not clearly explained, the evaluation stops here.
+
+---
 
 SSH
-Remember: Whenever you need help checking something, the student being evaluated
-should be able to help you.
+
+- Remember: Whenever you need help checking something, the student being evaluated
+  should be able to help you.
 
 - Check that the SSH service is properly installed on the virtual machine.
 - Check that it is working properly.
@@ -333,6 +342,8 @@ should be able to help you.
   To do this, you can use a key or a simple password. It will depend on the student being evaluated.
   Of course, you have to make sure that you cannot use SSH with the "root" user as stated in the subject.
   If something does not work as expected or is not clearly explained, the evaluation stops here.
+
+---
 
 Script monitoring
 Remember: Whenever you need help checking something, the student being evaluated
