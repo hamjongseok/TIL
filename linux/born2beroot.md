@@ -106,7 +106,7 @@ LVM의 활성 여부
 
 ---
 
-## 평가표
+# 평가표
 
 Introduction
 Please comply with the following rules:
@@ -330,37 +330,45 @@ UFW
 
 SSH
 
-- Remember: Whenever you need help checking something, the student being evaluated
-  should be able to help you.
+- Remember: Whenever you need help checking something, the student being evaluated should be able to help you.
 
 - Check that the SSH service is properly installed on the virtual machine.
+- ssh가 제대로 설치되어있는지 확인
 - Check that it is working properly.
-- The student being evaluated must be able to explain to you basically what SSH is and
-  the value of using it.
+- 정상적으로 작동하는지 확인
+- The student being evaluated must be able to explain to you basically what SSH is and the value of using it.
+- SSH가 무엇이고 SSH를 사용하는 가치를 기본적으로 설명할 수 있어야 합니다.
 - Verify that the SSH service only uses port 4242.
+- SSH 서비스가 포트 4242만 사용하는지 확인합니다.
 - The student being evaluated should help you use SSH in order to log in with the newly created user.
-  To do this, you can use a key or a simple password. It will depend on the student being evaluated.
-  Of course, you have to make sure that you cannot use SSH with the "root" user as stated in the subject.
-  If something does not work as expected or is not clearly explained, the evaluation stops here.
+- 평가 중인 학생은 SSH를 사용하여 새로 만든 사용자로 로그인하는 데 도움이 됩니다.
+- ????
+- To do this, you can use a key or a simple password. It will depend on the student being evaluated.
+- 이렇게 하려면 키나 간단한 암호를 사용하면 됩니다. 그것은 평가받는 학생에 따라 달라질 것입니다.
+- Of course, you have to make sure that you cannot use SSH with the "root" user as stated in the subject.
+- 물론 제목에 명시된 "루트" 사용자와 SSH를 함께 사용할 수 없도록 해야 합니다.
+- If something does not work as expected or is not clearly explained, the evaluation stops here.
 
 ---
 
 Script monitoring
-Remember: Whenever you need help checking something, the student being evaluated
-should be able to help you.
+
+- Remember: Whenever you need help checking something, the student being evaluated should be able to help you.
 
 The student being evaluated should explain to you simply:
 
+- 간단하게 설명해야한다.
 - How their script works by showing you the code.
+- 코드를 보여줌으로써 그들의 스크립트가 작동하는 방식.
 - What "cron" is.
-- How the student being evaluated set up their script so that it runs every 10 minutes
-  from when the server starts.
-  Once the correct functioning of the script has been verified, the student being evaluated
-  should ensure that this script runs every minute. You can run whatever you want
-  to make sure the script runs with dynamic values correctly. Finally, the student being evaluated
-  should make the script stop running when the server has started up, but without
-  modifying the script itself. To check this point, you will have to restart
-  the server one last time. At startup, it will be necessary to check that the script
-  still exists in the same place, that its rights have remained unchanged, and that it
-  has not been modified.
-  If something does not work as expected or is not clearly explained, the evaluation stops here.
+- cron이 어떤것인지 ?
+- How the student being evaluated set up their script so that it runs every 10 minutes from when the server starts.
+- 평가 중인 학생이 서버가 시작될 때부터 10분마다 실행되도록 스크립트를 설정하는 방법입니다.
+- Once the correct functioning of the script has been verified, the student being evaluated should ensure that this script runs every minute.
+- 매분 마다 실행이 잘되는지 확인해 볼것
+- You can run whatever you want to make sure the script runs with dynamic values correctly.
+- Finally, the student being evaluated should make the script stop running when the server has started up, but without modifying the script itself.
+- 마지막으로 평가 중인 학생은 서버가 시작될 때 스크립트 자체를 수정하지 않고 스크립트 실행을 중지해야 합니다. 이게무슨말 ?
+- To check this point, you will have to restart the server one last time. At startup, it will be necessary to check that the script still exists in the same place, that its rights have remained unchanged, and that it has not been modified.
+- 이 점을 확인하려면 서버를 마지막으로 재시작해야 합니다. 시작할 때 스크립트가 여전히 같은 장소에 존재하는지, 스크립트의 권한이 변경되지 않았는지, 수정되지 않았는지 확인해야 합니다.
+- If something does not work as expected or is not clearly explained, the evaluation stops here.
