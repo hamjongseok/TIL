@@ -73,77 +73,22 @@ DBMS 접속 기술
 
 ---
 
-- 윈도우 함수: GROUP BY 절을 이용하지 않고 속성의 값을 집계할 함수를 기술함
-  - 함수의 인수로 지정한 속성이 대상 레코드의 범위가 되는데, 이를 WINDOW라 함
-  - PARTITION BY: 윈도우 함수가 적용될 범위로 사용할 속성 지정
-  - → WINDOW 함수 OVER (PARTITION BY 속성 ORDER BY 속성)[AS 바꾸고 싶은 이름]
+## `ORM(Object-Relational Mapping)`
 
-![](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/cc2777e0-9a0e-4000-9259-63ac5e328645/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2022-02-25_%E1%84%8B%E1%85%A9%E1%84%8C%E1%85%A5%E1%86%AB_12.10.52.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220225%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220225T031800Z&X-Amz-Expires=86400&X-Amz-Signature=53885df0f2a71deb0e0af03d9ef179154b572bc4a289ce1172d01df1f7f1de05&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA%25202022-02-25%2520%25E1%2584%258B%25E1%2585%25A9%25E1%2584%258C%25E1%2585%25A5%25E1%2586%25AB%252012.10.52.png%22&x-id=GetObject)
+ORM의 개요
 
-- 조인(JOIN)
-  - 결합을 의미하며, 관계형 데이터베이스에서의 조인은 교집합 결과를 가지는 결합 방법을 의미
-  - 두 릴레이션으로부터 연관된 튜플들을 결합해, 하나의 새로운 릴레이션을 반환
-- 논리적 조인
-  ![](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/166d5320-a115-41bc-9e2d-0f0fe454c0d6/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2022-02-25_%E1%84%8B%E1%85%A9%E1%84%8C%E1%85%A5%E1%86%AB_12.12.10.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220225%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220225T031820Z&X-Amz-Expires=86400&X-Amz-Signature=a9c5999e581053ca47b2b10fb7e3fd34db5710c3019db295afa061f1dc4565e2&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA%25202022-02-25%2520%25E1%2584%258B%25E1%2585%25A9%25E1%2584%258C%25E1%2585%25A5%25E1%2586%25AB%252012.12.10.png%22&x-id=GetObject)
+- 객체와 관계형데이터 베이스(RDB)의 데이터를 연결(Mapping)하는 기술
+- ORM으로 생성된 가상의 객체 지향 데이터 베이스는 프로그래밍 코드 또는 데이터베이스와 독립적이므로 재사용 및 유지보수 용이
+- 직관적이고 간단하게 데이터 조작 가능
 
-  물리적 조인
-  ![](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/fd04e9bc-8b87-48d3-beb3-7ae6eb68d429/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2022-02-25_%E1%84%8B%E1%85%A9%E1%84%8C%E1%85%A5%E1%86%AB_12.12.25.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220225%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220225T031852Z&X-Amz-Expires=86400&X-Amz-Signature=098085aa5371a5638645965f0cc811e12a6fe814aa18a7ae0df4ae52d4365cc1&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA%25202022-02-25%2520%25E1%2584%258B%25E1%2585%25A9%25E1%2584%258C%25E1%2585%25A5%25E1%2586%25AB%252012.12.25.png%22&x-id=GetObject)
+ORM 프레임 워크
+![](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/7c423fd6-a46c-43a2-9448-1692ba9c9838/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2022-02-26_%E1%84%8B%E1%85%A9%E1%84%8C%E1%85%A5%E1%86%AB_1.40.29.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220225%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220225T164859Z&X-Amz-Expires=86400&X-Amz-Signature=c1022fc06df3c91d24e9d6264be694e40dcb73e9b6e658cf60a218dd856dbf10&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA%25202022-02-26%2520%25E1%2584%258B%25E1%2585%25A9%25E1%2584%258C%25E1%2585%25A5%25E1%2586%25AB%25201.40.29.png%22&x-id=GetObject)
 
----
+ORM의 한계
 
-### `트랜잭션`
-
-트랜잭션의 정의
-
-- 데이터베이스의 상태를 변환시키는 하나의 논리적 기능을 수행하기 위한 작업의 단위
-- 한꺼번에 모두 수행되어야 할 일련의 연산들
-- COMMIT
-  - 트랜잭션 처리가 정상으로 종료되어 수행한 변경내용을 DB 에 반영하는 명령어
-- ROLLBACK
-  - 트랜잭션 처리가 비정상으로 종료되어 DB의 일관성이 깨졌을때 트랜잭션이 행한 모든 변경 작업을 취소하고 이전상태로 되돌리는 연산
-  - COMMIT과 ROLLBACK 명령어에 의해 보장받는 트랜잭션 특징 = 원자성(중요)
-- SAVEPOINT(=CHECKPOINT)
-  - 트랜잭션 내에서 ROLLBACK할 위치인 저장점을 지정하는 명령어, 여러개의 SAVEPOINT 지정 가능
-
-트랜잭션의 특성(중요)
-![](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/f12ceaf6-035d-45f5-beae-ff4305f24075/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2022-02-23_%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE_1.42.32.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220223%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220223T044509Z&X-Amz-Expires=86400&X-Amz-Signature=dddb3a1c933169676a92136e943eead94ef0cc4a2b6fac0199ef7d3f8ce502aa&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA%25202022-02-23%2520%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE%25201.42.32.png%22&x-id=GetObject)
-
-CRUD 매트릭스
-
-- Create, Read, Update, Delete, ‘C > D > U > R’의 우선순위 적용
-- 테이블, 프로세스에 C,R,U,D가 모두 없는 경우
-- 테이블에 C 또는 R이 없는 경우 (프로세스는 하나만 있어도 돌아감)
-
----
-
-## `인덱스`
-
-인덱스의 개념 및 선정기준, 고려사항
-
-- 데이터 레코드를 빠르게 접근하기 위해 <키 값, 포인터>쌍으로 구성된 데이터 구조
-
-- 인덱스 컬럼의 분포도(Selectivity)가 10~15% 이내인 “컬럼”
-- 가능한 한 수정이 빈번하지 않는 “컬럼”
-- ORDER BY, GROP BY, UNION이 빈번한 “컬럼”
-- 분포도가 좋은 컬럼은 단독 인덱스로 생성
-- 인덱스 들이 자주 조합되어 사용하는 컬럼은 결합 인덱스로 생성
-
-설계시 고려사항
-
-- 새로 추가되는 인덱스는 기존 엑세스 경로에 영향을 미칠 수 있음
-- 지나치게 많은 인덱스는 오버헤드(Overhead)발생
-- 넓은 범위 인덱스 처리시 오히려 전체 처리보다 많은 오버헤드를 발생시킴
-- 인덱스 만의 추가적인 저장공간이 필요
-- 인덱스와 테이블 데이터의 저장 공간이 분리되도록 설계
-
-인덱스 종류
-
-- 클러스터드 인덱스/ 넌클러스터드 인덱스
-- 트리 기반 인덱스 : 인덱스를 저장하는 블록들이 트리 구조를 이루고 있는것
-- 비트맵 인덱스 : 인덱스 컬럼의 데이터를 Bit 값인 0,1로 변환해 인덱스 키 사용
-- 함수 기반 인덱스 : 컬럼에 특정 함수나 수식을 적용해 산출된 값을 사용하는 것
-- 비트맵 조인 인덱스 : 다수의 조인된 객체로 구성된 인덱스
-- 도메인 인덱스 : 개발자가 필요한 인덱스를 직접 만들어 사용하는것 (확장형 인덱스)
+- 프레임 워크가 자동으로 SQL을 작성하기 때문에 의도대로 작성되었는지 확인해야함
+- 객체 지향적인 사용 고려와 프로젝트가 크고 복잡해질 수록 적용하기 어려워짐
+- 기존의 기업들은 ORM을 고려하지 않은 데이터베이스를 사용하고 있기 때문에, ORM에 적합하게 변환하려면 많은 시간과 노력 필요
 
 ---
 
