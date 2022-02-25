@@ -50,28 +50,28 @@
 
 ---
 
-DCL(Data Control Language, 데이터 제어어)
+## DBMS 접속기술
 
-- 데이터의 무결성, 보안, 회복, 병행수행 제어 등을 정의하는데 사용되는 언어
-- 데이터 베이스 관리자(DBA)가 데이터 관리를 목적으로 사용
+웹 응용 시스템의 구조
 
-![](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/cc67b1d5-705f-46f6-ba5f-b25c424583d7/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2022-02-25_%E1%84%8B%E1%85%A9%E1%84%8C%E1%85%A5%E1%86%AB_12.04.50.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220225%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220225T031713Z&X-Amz-Expires=86400&X-Amz-Signature=933b90f16787a8ebd327a93441a548d584808a8d2ea8126348bfa28e7af85fcf&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA%25202022-02-25%2520%25E1%2584%258B%25E1%2585%25A9%25E1%2584%258C%25E1%2585%25A5%25E1%2586%25AB%252012.04.50.png%22&x-id=GetObject)
+- 사용자 ←→ 웹서버 ←→ WAS ←→ DBMS
+- 사용자는 웹서버에 접속해 데이터를 주고받고 웹서버는 WAS에게 해당요청을 전달함 그다음 WAS는 수신한 요청을 트랜잭션 언어로 변환한후 DBMS에 전달해 데이터를 받으면, 이데이터를 다시 웹서버로 전달해 사용자에게 도달하게 함
 
-ex) GRANT UPDATE IN ON 고객(테이블) TO 홍길동 WITH GRANT OPTION;
+DBMS 접속 기술
 
-ex) REVOKE GRANT OPTION FOR UPDATE ON 고객(테이블) FROM 홍길동 CASCADE;
+- JDBC(Java Database Connectivity)
+  - 1997년 썬 마이크로 시스템에서 출시, JAVA 언어로 다양한 종류의 데이터 베이스에 접속하고 SQL 문을 수행 할때 사용되는 표준 API
+  - 접속하려는 DBMS에 대한 드라이버가 필요
+- ODBC(Open Database Connectivity)
+  - 1992년 마이크로소프트에서 출시, 데이터베이스에 접근하기 위해 표준 개방형 API로 개발 언어에 관계없이 사용가능
+  - OCBC도 접속하려는 DBMS에 대한 드라이버가 필요 하지만 접속하려는 DBMS의 인터페이스를 알지 못하더라도 ODBC문장을 사용해 SQL을 작성하면 ODBC에 포함된 드라이버 관리자가 해당 DBMS의 인터페이스에 맞게 연결해줌
+  - → DBMS의 종류를 몰라도된다
 
-SELECT
+정적 SQL vs 동적 SQL
 
-- WHERE절 : 검색할 조건을 기술
-- ORDER BY절 : 특정 속성을 기준으로 정렬해 검색할 때 사용
-  - ASC(오름차순), DESC(내림차순)- 따로 설정이 없을 때는 기본적으로 ASC 사용
-- GROUP BY절 : 특정 속성을 기준으로 그룹화해 검색할때 사용, 일반적으로 그룹 함수와 함께 사용
-- HAVING절 : GROUPBY와 함께 사용되며, 그룹에 대한 조건 지정
-  - DISTINCT: 중복 튜플 제거
-- 집계/그룹함수 : GROUP BY절에 지정된 그룹별로 속성의 값을 집계할 함수를 기술함
+![](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/536355f7-adbd-49ce-95a9-62dad8d024ea/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2022-02-26_%E1%84%8B%E1%85%A9%E1%84%8C%E1%85%A5%E1%86%AB_1.08.53.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220225%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220225T161815Z&X-Amz-Expires=86400&X-Amz-Signature=a03b9023404600b8a1cb23023126ea8dfa1bf5cc323c512b3f04ac8fac3d0f2e&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA%25202022-02-26%2520%25E1%2584%258B%25E1%2585%25A9%25E1%2584%258C%25E1%2585%25A5%25E1%2586%25AB%25201.08.53.png%22&x-id=GetObject)
 
-![](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/fa52f4db-540f-4ee8-adf8-ebcfcbc6308c/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2022-02-25_%E1%84%8B%E1%85%A9%E1%84%8C%E1%85%A5%E1%86%AB_12.09.12.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220225%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220225T031730Z&X-Amz-Expires=86400&X-Amz-Signature=56339b1bd79407842344e93c03a147b5da7e2932fb16cc7ecefbf972320d53bb&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA%25202022-02-25%2520%25E1%2584%258B%25E1%2585%25A9%25E1%2584%258C%25E1%2585%25A5%25E1%2586%25AB%252012.09.12.png%22&x-id=GetObject)
+---
 
 - 윈도우 함수: GROUP BY 절을 이용하지 않고 속성의 값을 집계할 함수를 기술함
   - 함수의 인수로 지정한 속성이 대상 레코드의 범위가 되는데, 이를 WINDOW라 함
