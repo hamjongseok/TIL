@@ -6,15 +6,6 @@
 
 프로젝트 진행순서(미정)
 
-1. 주제선정
-2. 시나리오 작성 - 고객 요구사항 분석(문제 분석)
-3. 모델링(개발 언어 프레임워크 설정 → 사이트맵 작성 → ERD 클라우드)
-4. **오라클 회원가입, 스프링 환경설정 통일(자바 버전, 서버 IP, 깃연동), 필요 프로그램 설치**
-5. 오라클 SQL 작성(모든 쿼리는 TXT 저장)
-6. 포트폴리오 작성
-7. 프로그램 뼈대 작성(spring mvc project 작성, mybatis 작성, )
-8. 작업 분담 및 개별 코딩
-
 ```
 ERD 클라우드(백 전반적 계획 수립) -> UI(부트스트랩 이용)프론트앤드 디자인(JSP(이클립스에서 하는거임)) -> 컨트롤러 MVC에서 C를 만든다
 (여기에서 스프링, mysql등) -> 서버구축 아키텍처 구축(보안, ap설정, 도메인 설정 등)
@@ -60,17 +51,10 @@ ERD 클라우드(백 전반적 계획 수립) -> UI(부트스트랩 이용)프�
 - Servlet, JSP를 실행할 수 있는 소프트웨어를 웹 컨테이너 또는 서블릿 컨테이너라고 한다.
 - 웹 컨테이너의 역할
   - 웹서버에서 JSP를 요청하면 웹 컨테이너에서는 JSP파일을 서블릿 파일로 변환한 뒤 컴파일 하여 이것을 실행한 결과를 `웹서버에 전달한다.`
+  - 쉽게 얘기해서 동적인 데이터를 처리해서 정적인 페이지로 생성해주는 소프트웨어 모듈
   - 서블릿들을 모아 관리
   - 새로운 요청이 들어올 때마다 새로운 스레드를 생성
   - 작업이 끝난 서블릿 스레드 자동 제거
-
-### `WAS(Web Application Server)`
-
-- Web Server와 Web Container가 합쳐진것
-- Web Server는 정적 컨텐츠를 요청에 따라 전달 해주는 역할을 하는 반면에 WAS는 사용자의 요청에 따라 서버에서 프로그램을 실행 및 처리한 뒤 그것을 다시 정적인 페이지로 변환하여 반환하는 등의 동적인 처리를 담당
-- 웹서버 단독으로는 처리할 수 없는 데이터 베이스의 조회나 다양한 로직 처리가 필요한 동적 컨텐츠를 제공한다.
-- WAS는 JSP, Sevlet 구동 환경을 제공해주기 때문에 웹 컨테이너 혹은 서블릿 컨테이너라고도 부른다.
-  ![](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/2c0f2599-985c-458a-bdf2-e759a05c0789/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2022-03-07_%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE_8.25.46.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220307%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220307T112554Z&X-Amz-Expires=86400&X-Amz-Signature=481dffc2d8891bf502ed7baedcbb59672bec40356158a6f9dee8f565cca056e1&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA%25202022-03-07%2520%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE%25208.25.46.png%22&x-id=GetObject)
 
 ```
 스레드(thread)란?
@@ -80,6 +64,14 @@ ERD 클라우드(백 전반적 계획 수립) -> UI(부트스트랩 이용)프�
 
 또한, 두 개 이상의 스레드를 가지는 프로세스를 멀티스레드 프로세스(multi-threaded process)라고 한다.
 ```
+
+### `WAS(Web Application Server)`
+
+- Web Server와 Web Container가 합쳐진것
+- Web Server는 정적 컨텐츠를 요청에 따라 전달 해주는 역할을 하는 반면에 WAS는 사용자의 요청에 따라 서버에서 프로그램을 실행 및 처리한 뒤 그것을 다시 정적인 페이지로 변환하여 반환하는 등의 동적인 처리를 담당
+- 웹서버 단독으로는 처리할 수 없는 데이터 베이스의 조회나 다양한 로직 처리가 필요한 동적 컨텐츠를 제공한다.
+- WAS는 JSP, Sevlet 구동 환경을 제공해주기 때문에 웹 컨테이너 혹은 서블릿 컨테이너라고도 부른다.
+  ![](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/2c0f2599-985c-458a-bdf2-e759a05c0789/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2022-03-07_%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE_8.25.46.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220307%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220307T112554Z&X-Amz-Expires=86400&X-Amz-Signature=481dffc2d8891bf502ed7baedcbb59672bec40356158a6f9dee8f565cca056e1&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA%25202022-03-07%2520%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE%25208.25.46.png%22&x-id=GetObject)
 
 ### 여기서 든 의문점, WAS만 사용안하고 왜 웹서버와 같이 사용하는가?
 
@@ -91,9 +83,18 @@ ERD 클라우드(백 전반적 계획 수립) -> UI(부트스트랩 이용)프�
 
 ## Apache Tomcat
 
-- 아파치 톰캣은 아파치 소프트웨어 재단에서 개발한 서블릿 컨테이너만 있는 웹 애플리케이션 서버이다.
+### 이번 프로젝트를 진행하면서 아파치 톰캣을 사용하는데 왜 사용하는지에 대해 공부를 해보았다.
 
+- apach란 것은 소프트웨어 단체 이름 그리고 우리가 흔히 부르는 아파치서버라는 것은 이제단에서 후원하는 오픈소스 프로젝트 커뮤니티에서 만든 http웹서버를 지칭하는 말이다.
+- 즉 ,아파치 http서버는 http요청을 처리하는 웹서버인 것이다
+- 우리가 사용하는 아파치 톰캣은 아파치 소프트웨어 재단에서 개발한 서블릿 컨테이너만 있는 웹 애플리케이션 서버이다.
 - 톰캣은 웹 서버와 연동하여 실행할 수 있는 자바 환경을 제공하여 자바서버 페이지와 자바 서블릿이 실행할 수 있는 환경을 제공하고 있다.
+- 위에서 공부한 WAS의 종류이고 Tomcat WAS라고도 불린다.
+
+### 그런데 왜 Apache Tomcat인가?
+
+- 기본적으로 아파치와 톰캣의 기능은 나뉘어져 있지만, 톰캣 안에 있는 컨테이너를 통해 일부 아파치의 기능을 발휘하기 때문에 보통 아파치 톰캣으로 합쳐서 부른다고 한다.
+  ![](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/30ba04bc-f943-443a-988c-a5473c224127/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2022-03-09_%E1%84%8B%E1%85%A9%E1%84%8C%E1%85%A5%E1%86%AB_12.11.22.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220308%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220308T153831Z&X-Amz-Expires=86400&X-Amz-Signature=212b86dd4686b929bca70f78aa7d703557cd0df4ecb165fc8d8860cc38d1e4de&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA%25202022-03-09%2520%25E1%2584%258B%25E1%2585%25A9%25E1%2584%258C%25E1%2585%25A5%25E1%2586%25AB%252012.11.22.png%22&x-id=GetObject)
 
 ---
 
