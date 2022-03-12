@@ -103,4 +103,29 @@ ERD 클라우드(백 전반적 계획 수립) -> UI(부트스트랩 이용)프�
 ### JSP
 
 - JSP 란 JavaServer Pages 의 약자이며 HTML 코드에 JAVA 코드를 넣어 동적웹페이지를 생성하는 웹어플리케이션 도구이다.
-- JSP 가 실행되면 자바 서블릿(Servlet) 으로 변환되며 웹 어플리케이션 서버(WAS)에서 동작되면서 필요한 기능을 수행하고그렇게 생성된 데이터를 웹페이지와 함께 클라이언트로 응답한다.
+- JSP 가 실행되면 자바 서블릿(Servlet)으로 변환되며 웹 어플리케이션 서버(WAS)에서 동작되면서 필요한 기능을 수행하고그렇게 생성된 데이터를 웹페이지와 함께 클라이언트로 응답한다.
+  ![](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/13c89448-4cbf-43bb-9d70-24dccecf89e0/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2022-03-07_%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE_7.30.39.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220308%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220308T155208Z&X-Amz-Expires=86400&X-Amz-Signature=ee1171b14f58447cb8bc84e261218194b9031644ae6c328abbd2831bb1902114&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA%25202022-03-07%2520%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE%25207.30.39.png%22&x-id=GetObject)
+
+```
+1. 클라이언트가 어떤 동작을 함으로써 hello.jsp 를 요청하였다.
+
+2. JSP 컨테이너가 JSP 파일을 읽는다.
+
+3. JSP 컨테이너가 Generete (변환) 작업을 통해 Servlet ( .java )  파일을 생성한다.
+
+4. .java 파일은 다시 .class 파일로 컴파일된다.
+
+5. Execute (실행) 을통해 HTML 파일을 생성하여 JSP 컨테이너 에게 전달한다.
+
+6. JSP 는 HTTP 프로토콜을 통해 HTML 페이지를 클라이언트 에게 전달한다.
+```
+
+### 자바 서블릿(Java Servlet)
+
+- 서블릿이란 웹페이지를 동적으로 생성하기 위해 서버측 프로그램을 말한다.
+- 이는 자바 언어를 기반으로 만들지며 웹 어플리케이션 서버 ( Web Application Sever ) 위에서 컴파일 되고 동작한다.
+
+### JSP 와 서블릿의 차이점
+
+- JSP 와 서블릿의 차이점은 결과적으로 하는일은 동일하지만 JSP 는 HTML 내부에 JAVA 소스코드가 들어감으로 인해 HTML 코드를 작성하기 간편하다는 장점이있다
+- 서블릿은 자바코드내에 HTML 코드가 있어서 읽고 쓰기가 굉장히 불편하기 때문에 작업의 효율성이 떨어진다.
