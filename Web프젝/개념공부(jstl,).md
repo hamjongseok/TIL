@@ -44,3 +44,25 @@ EL도 마찬가지로 자바먼저 하고 공부
 - **최종 사용자**에게 “무엇”을 화면(UI)으로 보여줌
 
 ![](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/f0b0c7a8-6bbd-4a4b-b8e6-6569f646affb/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2022-03-13_%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE_2.34.30.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220313%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220313T062800Z&X-Amz-Expires=86400&X-Amz-Signature=d193d06a085d51485b6c181411022f42122ebaa035514f14059b3e190a0573e2&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA%25202022-03-13%2520%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE%25202.34.30.png%22&x-id=GetObject)
+쉽게 말해서 다시 정리하자면
+
+Model : 데이터와 관련된 부분
+
+View : 사용자에게 보여지는 부분
+
+Controller : Model과 View를 이어주는 부분
+
+## MVC패턴을 지키는 규칙
+
+1. Model은 Controller와 View에 의존하지 않아야한다
+   - 즉 Model 내부에 Controller와 View에 관련된 코드가 있으면 안된다.
+   - 언제든 깔끔하고 정제된 데이터를 꺼내 쓸 수 있게 뷰나 컨트롤러의 코드를 섞어넣지않고 데이터와 관련된 코드만 존재
+2. View는 Model에만 의존해야 하고, Controller에는 의존하면 안된다.
+   - View 내부에 Model의 코드만 있을 수 있고, Controller의 코드는 있으면 안된다.
+3. View가 Model로부터 데이터를 받을 때는, 사용자마다 다르게 보여주어야 하는 데이터에 대해서만 받아야 한다.
+   - 기본적으로 구성되어있는 모든 사용자가 확인할수있는 UI == View
+   - 사용자마다 다른 정보 == Model
+4. Controller는 Model과 View에 의존해도 된다.
+   - Controller는 Model과 View의 코드가 있을 수 있다.
+   - 그 이유는 Controller는 모델과 뷰의 중개자 역할을 하면서 전체 로직을 구성하기 때문
+5. View가 Model로부터 데이터를 받을때, 반드시 Controller에서 받아야 한다.
