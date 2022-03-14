@@ -216,3 +216,55 @@ root password는 이 정책을 따라야한다. enforce_for_root
 - `maxrepeat=N` : 같은 문자가 N번 이상 연속해서 나오는지 검사
 
 ---
+
+## hostname
+
+- hostnamectl 명령어를 통해 hostname을 확인할 수 있다.
+- sudo vi /etc/hostname 들어가서 바꿈, 껏다가 켜야함
+
+## LVM
+
+- lsblk 명령어로 파티션을 확인 할 수 있다.
+- mandatory 파트 예시와 비교
+
+LVM이란 ?
+
+- Logical Volume Manager
+- 이름 뜻 그대로 Logical(논리적인) Volume(공간을) Manager(만들고 관리 해주는 프로그램이다.
+- 디스크 효율 관리 기술
+- 사용 이유
+  - 여러개의 디스크 공간을 합쳐서 하나인 양 사용하기 위해
+  - 사용하기 애매한 공간의 디스크 파티션들을 활용하기 위해
+  - 기존에 사용중인 디스크의 공간을 확장할 수 있기 때문에
+- 파티션이란?
+  - 어떤 하나의 무언가를 여러개로 나누는 개념
+- LVM ?
+  - 여러 디스크 공간, 짜투리 공간을 합쳐서 하나로 만드는 것
+  - 한번 파티션을 나누면 서로 용량을 주고 받을 수 없다.
+  - 파티션을 논리적인 개념(LVM)으로 나누면, 용량을 서로 주고 받을 수 있다.
+    ![](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/e2d603f4-b7a7-450d-a9fa-0f0e4f7fa152/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2022-03-14_%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE_1.13.22.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220314%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220314T041338Z&X-Amz-Expires=86400&X-Amz-Signature=0b8ecf4a32eb7f987849821cce3320595b9c353ff467e323d5d658288ee7ae07&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA%25202022-03-14%2520%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE%25201.13.22.png%22&x-id=GetObject)
+
+## LVM 용어
+
+- PV(Physical Volume)
+
+  - LVM에서 블록 장치를 사용하려면 PV로 초기화를 해야한다. 즉, 파티션들을 LVM에서 사용할 수 있게 변환하는것
+  - PV는 일정한 크기의 PE(Pysyical Extent)들로 구성이 된다.
+
+- PE((Physical Extent)
+  - PV를 구성하는 일정한 크기의 블록으로 기본크기는 4MB
+  - V(Logical Volume)의 LE(Logical Extent)들과 1:1로 맵핑된다. 그렇기에 항상 PE와 LE의 크기는 동일하다.
+- PV로 초기화시킨 모습
+  ![](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/988c7566-0423-4c93-9f6c-009db483b376/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2022-03-14_%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE_1.29.13.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220314%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220314T042925Z&X-Amz-Expires=86400&X-Amz-Signature=3b5156c1f6c8f30eed755597be8014cf45514207ccaa52aa68099e179bc87601&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA%25202022-03-14%2520%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE%25201.29.13.png%22&x-id=GetObject)
+- VG(Volume Group)
+  - PV들의 집합으로 LV를 할당할 수 있는 공간이다
+    ![](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/5640f21b-ea32-4204-8d28-510a675a82f8/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2022-03-14_%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE_1.30.29.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220314%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220314T043103Z&X-Amz-Expires=86400&X-Amz-Signature=02a3d0ca3602378f7d0f0c1ad4336d799d2bf0ea6eca45eab4540a51235e0119&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA%25202022-03-14%2520%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE%25201.30.29.png%22&x-id=GetObject)
+- LV(Logical Volume)
+  - 사용자가 최종적으로 다루게되는 논리적인 스토리지
+- LE(Logical Extent)
+  - LV를 구성하는 일정한 크기의 블록으로 기본크기는 4MB이다.
+  - 항상 PE와 LE의 크기는 동일하다.
+    ![](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/cb92bdfe-e3f1-43a5-8e89-ac7ab4ac21ee/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2022-03-14_%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE_1.32.24.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220314%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220314T043318Z&X-Amz-Expires=86400&X-Amz-Signature=161f90c2d089e49b5fb7f14c034a86b2845a95cc36a73af52a50055ae4e53f29&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA%25202022-03-14%2520%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE%25201.32.24.png%22&x-id=GetObject)
+  - VG에서 필요에 따라 LV를 만들어서 사용한다.
+
+---
