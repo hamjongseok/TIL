@@ -160,3 +160,59 @@ ufw deny (포트넘버): 특정 포트넘버 접속 제한
 ## 비밀번호 정책
 
 chage -l <사용자>를 통해 현재 사용자의 암호정보를 알 수 있다.
+
+기본 정책
+
+- Last password change (-d) : 마지막 패스워드 변경일
+- Password expires : 암호 만료일
+- Password inactive(-I (대문자i)) : 비활성화 유예기간
+- Account expires(-E) : 계정 만료일
+- Minimum number .... (-m) : 패스워드 변경 후 최소 사용 기간, 즉 최소 의무 사용일
+- Maximum number .... (-M) : 패스워드 변경 후 변경 없이 사용가능한 최대 일 수
+- Number of days of warning ... (-W) : 패스워드 만료 전 경고메세지를 보낼 일 수
+
+- 서브젝트에서 요구사항
+
+1. password 는 30일마다 만료되어야한다. -M 30
+2. 비밀번호 최소 사용일이 2일 이다 (비밀번호 변경후 2일이 지나야 다시변경 가능) -m 2
+3. 유저는 비밀번호 만료 7일전에 경고 메세지를 받아야 한다. -W 7
+
+- sudo chage -M 30 -m 2 -W 7 jham 으로 설정 완료
+
+전체 정책 변경
+
+- 위 방법은 나의 계정만 정책을 변경시키고 이제 새로 만들어질 user에도 같은 정책이 적용되는 전체 정책을 변경해야한다.
+- vi /etc/pam.d/common-password 를 통해 현재 패스워드 정책을 확인할 수 있다.
+- 패스워드 정책 설정을 위한 모듈을 설치
+- sudo apt install libpam-cracklib
+
+```
+비밀번호는 최소 10자리여야 한다. minlen=10
+
+영어 대문자 + 숫자는 꼭 포함하고 있어야 한다. ucredit숫자, decredit숫자
+
+3개 이상의 연속된 동일한 문자를 가지면 안된다. maxrepeat = 3
+
+비밀번호는 사용자의 이름을 포함하면 안된다. reject_username
+
+비밀번호는 이전의 비밀번호와 다른 최소 7글자를 가져야 한다. difok = 7
+
+root password는 이 정책을 따라야한다. enforce_for_root
+
+```
+
+- `retry=N` : 암호입력을 N회로 설정
+- `minlen=N` : 암호의 최소 길이는 N
+- `difok=N` : 기존 패스워드와 달라야하는 문자 수 N
+- `ucredit=-N` : 대문자 N개 이상
+- `lcredit=-N` : 소문자 N개 이상 -1
+- `decredit=-N` : 숫자 N개 이상 -1
+
+(N < 0)
+새 패스워드에 있어야 하는 대문자 최소 개수.
+
+- `reject_username` : 사용자의 이름이 그대로 혹은 뒤집혀 패스워드에 있는지 검사
+- `enforce_for_root` : root사용자가 패스워드를 바꾸려 할 때에도 위 조건 적용
+- `maxrepeat=N` : 같은 문자가 N번 이상 연속해서 나오는지 검사
+
+---
