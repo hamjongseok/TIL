@@ -142,6 +142,21 @@ ufw deny (포트넘버): 특정 포트넘버 접속 제한
 
   - 데이터 전송 (깃 푸시)
   - 원격제어 (aws같은 클라우드 서비스)
+  - 포트포워딩
 
-- 옆에 분이 알려주셔서 성공했다.
-- 내일은 비밀번호 정책까지 해보자
+- apt search openssh-server 명령어를 통해 openssh가 깔려있는지 확인.
+  - 깔려있지 않다면, apt install open ssh-server 명령어로 설치
+- 깔려있지 않다면, apt install open ssh-server 명령어로 설치
+- sudo vim /etc/ssh/sshd_config 명령어를 통해 ssh설정을 변경
+- sudo vim /etc/ssh/sshd_config 명령어를 통해 ssh설정을 변경
+- PermitRootLogin 부분을 no로 바꾼다. 해당 옵션을 통해 외부에서 root로 로그인하는 것을 막을 수 있다.
+- hostname -I
+  - 가상 ip 확인
+- 포트포워딩
+  - ssh -p 4242 jham@192.168.56.1
+
+---
+
+## 비밀번호 정책
+
+chage -l <사용자>를 통해 현재 사용자의 암호정보를 알 수 있다.
