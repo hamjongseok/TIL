@@ -268,3 +268,15 @@ LVM이란 ?
   - VG에서 필요에 따라 LV를 만들어서 사용한다.
 
 ---
+
+## monitoring.sh
+
+### cron
+
+- 특정한 시간에 or 특정 시간마다 어떤 작업을 자동으로 수행하게 하는 명령어
+
+crontab
+
+- cron작업을 설정하는 파일
+- cron프로세스는 /etc/crontab 파일에 설정된 것을 읽어 작업을 수행
+- sudo cat /etc/crontab
