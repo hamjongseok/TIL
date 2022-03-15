@@ -269,8 +269,6 @@ LVM이란 ?
 
 ---
 
-## monitoring.sh
-
 ### cron
 
 - 특정한 시간에 or 특정 시간마다 어떤 작업을 자동으로 수행하게 하는 명령어
@@ -280,3 +278,44 @@ crontab
 - cron작업을 설정하는 파일
 - cron프로세스는 /etc/crontab 파일에 설정된 것을 읽어 작업을 수행
 - sudo cat /etc/crontab
+
+cron 설정 방법
+
+- sudo crontab -e
+- \*/10 \* \* \* \* /monitoring.sh | wall : 10분마다 root권한에서 "/monitoring.sh | wall" 실행
+- \* \* \* \* sleep [ ]; command : 초단위로 컨트로 하려면
+- \* \* \* \* \* 명령어 & sleep 30; 명령어
+
+## monitoring.sh
+
+- OS의 architecture 및 kernel version
+  - printf "#Architecture: "
+  - uname -srvmo
+    - -s는 커널 이름, -r은 커널릴리즈, -v는 커널 버전, -m은 아키텍쳐, -o는 os출력
+- physical(물리적) processors 개수
+  - printf "#CPU physical : "
+  - nproc --all
+    - "nproc --all"을 통해 설치된 프로세서의 갯수를 출력
+- virtual(가상) processors 개수
+  - printf "#vCPU : "
+  - cat /proc/cpuinfo | grep processor | wc -l
+    - 가상 프로세서(vCPU)의 갯수를 출력
+    - wc -l : 라인수 보여줌
+    - grep : 텍스트 파일에서 원하는 문자열이 들어간 행을 찾아 출력하는 명령어.
+- 서버에서 사용 가능한 RAM 및 사용률(%)
+
+  - printf "#Memory Usage: "
+  - free -m | grep Mem | awk '{printf"%d/%dMB (%.2f%%)\n", $3, $2, $3/$2 \* 100}'
+    - // free 사용가능한 메모리확인
+    - free명령어는 리눅스 시스템에서 메모리의 전체적인 현황을 살펴볼 수 있는 명령어
+    - -m 옵션을 통해 MB로 단위 변경
+    - awk를 사용하여 적절한 값 도출
+
+- 서버에서 사용 가능한 메모리 및 사용률(%)
+  - printf "#Disk Usage: "
+  - df -BM -a | grep /dev/mapper/ | awk '{sum+=$3}END{print sum}' | tr -d '\n'
+  - printf "/"
+  - df -BM -a | grep /dev/mapper/ | awk '{sum+=$4}END{print sum}' | tr -d '\n'
+  - printf "MB ("
+  - df -BM -a | grep /dev/mapper/ | awk '{sum1+=$3 ; sum2+=$4}END{printf "%d", sum1 / sum2 \* 100}' | tr -d '\n'
+  - printf "%%)\n"
