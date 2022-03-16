@@ -100,12 +100,6 @@ LVM의 활성 여부
 
 ---
 
-- 서브젝트를 읽어도 관련단어를 아예모르니간 어떻게 접근해야할지 아직 모르겠다.
-- 먼저 Virtualbox or UTM에 대해서 알아보고, 모르는 단어부터 천천히
-  알아가는것이 먼저일듯 싶다.
-
----
-
 # 평가표
 
 Introduction
@@ -282,6 +276,7 @@ Hostname and partitions
 - Compare the output with the example given in the subject. Please note: if the
   student evaluated makes the bonuses, it will be necessary to refer to the bonus example.
 - 파티션 보여주고 서브젝트와 비교
+
 - This part is an opportunity to discuss the scores! The student being evaluated should
   give you a brief explanation of how LVM works and what it is all about.
 - Lvm에 대한 설명, 동작원리

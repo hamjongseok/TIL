@@ -319,3 +319,4 @@ cron 설정 방법
   - printf "MB ("
   - df -BM -a | grep /dev/mapper/ | awk '{sum1+=$3 ; sum2+=$4}END{printf "%d", sum1 / sum2 \* 100}' | tr -d '\n'
   - printf "%%)\n"
+  - 내일은 꼭 클러스터 가야지 다끝내느거 목표하장
