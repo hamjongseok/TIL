@@ -314,9 +314,58 @@ cron 설정 방법
 - 서버에서 사용 가능한 메모리 및 사용률(%)
   - printf "#Disk Usage: "
   - df -BM -a | grep /dev/mapper/ | awk '{sum+=$3}END{print sum}' | tr -d '\n'
+    - df 사용가능한 디스크 용량 확인
+    - -BM , MB로 변경(-m 도 가능 ) -a , 모두(0인것도 보기)
+    - '{sum+=$3}END{print sum}' 세번째 필드의 합계산
+    - tr -d '\n' 개행 삭제
   - printf "/"
   - df -BM -a | grep /dev/mapper/ | awk '{sum+=$4}END{print sum}' | tr -d '\n'
   - printf "MB ("
   - df -BM -a | grep /dev/mapper/ | awk '{sum1+=$3 ; sum2+=$4}END{printf "%d", sum1 / sum2 \* 100}' | tr -d '\n'
   - printf "%%)\n"
-  - 내일은 꼭 클러스터 가야지 다끝내느거 목표하장
+- Cpu 사용량
+
+  - printf "#CPU load: "
+  - mpstat | grep all | awk '{printf "%.2f%%\n", 100-$13}'
+    - sysstat를 다운받아 mpstat 명령어를 사용하면 쉽게 현재 CPU의 사용량을 알 수 있다.
+    - mpstat 명령어에서 마지막 컬럼을 활용하여 결과를 도출
+
+- 마지막 부팅날짜 및 시간
+  - who -b | sed 's/^ \*system boot //g'
+    - last reboot 명령어를 사용하면 마지막으로 재기동한 시간이 언제인지 정렬하여 출력한다.
+    - who 명령어는 현재 내가 어떤 사용자로 접속을 했는지 확인하기 위해 사용할 수 있다.
+    - -b 옵션을 사용하면 마지막 시스템 부팅 시간을 출력한다는 뜻.
+    - sed도 추출하는 명령어
+- LVM이 활성 상태인지 여부
+  - printf "#LVM use: "
+  - if [ "$(lsblk | grep lvm | wc -l)" -gt 0 ] ; then printf "yes\n" ; else printf "no\n" ; fi
+    - lsblk 명령어를 사용하면 현재 장착된 디스크의 주요 사양을 확인할 수 있다.
+    - 리눅스 if문 활용
+- 활성 연결 수
+
+  - printf "#Connections TCP : "
+  - ss | grep -i tcp | wc -l | tr -d '\n'
+  - 통신하는 소켓 , 원격하면 1 생긴다.
+
+- 사용자 정보 확인
+  - printf "#User log: "
+    - who | wc -l
+- mac주소 확인
+
+  - printf "#Network: IP "
+  - hostname -I | tr -d '\n'
+    - ip adress 확인
+  - printf " ("
+  - ip link show | awk '$1 == "link/ether" {print $2}' | tr -d '\n'
+    - //모든 네트워크 인터페이스의 상태를 관리하고 출력함
+  - printf ")\n"
+
+- sudo 프로그램 실행된 명령 수
+
+  - printf "#Sudo : "
+  - journalctl \_COMM=sudo | grep COMMAND | wc -l | tr -d '\n'
+
+    - journalctl을 사용하면 systemd-journald 데몬이 수집한 모든 로그 정보를 볼 수 있다.
+    - journalctl을 사용하여 특정 로그를 보고싶다면 \_COMM=<특정> 옵션을 추가하면 된다.
+
+  - printf " cmd\n"
