@@ -94,9 +94,6 @@ LVM의 활성 여부
 ```
 
 - 평가 중에, 스크립트가 어떻게 실행되는지 설명해야합니다. 그리고 수정하지 않고 중단해야합니다. cron을 참고하세요.
-  ![](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/b3b8b495-e866-48b0-b107-599e30e0bd12/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2022-01-29_%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE_12.30.26.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220129%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220129T035913Z&X-Amz-Expires=86400&X-Amz-Signature=78d8b6066888184009c4414724ead96c6b7df59595fba5cbd4d8bee25e33f7ee&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA%25202022-01-29%2520%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE%252012.30.26.png%22&x-id=GetObject)
-  ![](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/bd54f7dd-ba36-43fc-a348-62c40663d106/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2022-01-29_%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE_12.30.52.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220129%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220129T035957Z&X-Amz-Expires=86400&X-Amz-Signature=a1b1e9703e9cbb009dde23e7dfc6887292c04c0709b00be3f72287816ae7dae8&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA%25202022-01-29%2520%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE%252012.30.52.png%22&x-id=GetObject)
-  ![](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/61d846c9-5ad7-4b6e-8cb8-7f4dd25f5c5d/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2022-01-29_%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE_12.31.06.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220129%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220129T040011Z&X-Amz-Expires=86400&X-Amz-Signature=eb21181b2e8298b8579ecb8717b19065d7b87fb18fe246d2438d28e05d4d46bb&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA%25202022-01-29%2520%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE%252012.31.06.png%22&x-id=GetObject)
 
 ---
 
@@ -168,6 +165,7 @@ General instructions
   to that of the ".vdi" file of the virtual machine to be evaluated. A simple
   "diff" should allow you to compare the two signatures. If necessary, ask the
   student being evaluated where their ".vdi" file is located.
+  - "signature.txt"에 포함된 서명이 평가할 가상 시스템의 ".vdi" 파일의 서명과 동일한지 확인합니다. 단순한 「diff」를 사용하면, 2개의 시그니처를 비교할 수 있습니다. 필요에 따라서, 평가 대상의 학생에게 「.vdi」파일의 위치를 묻습니다.
 - As a precaution, you can duplicate the initial virtual machine in order
   to keep a copy.
 - Start the virtual machine to be evaluated.
@@ -255,7 +253,7 @@ Normally there should be one or two modified files. If there is any problem, the
 - Finally, ask the student being evaluated to explain the advantages of this password policy, as well as the
   advantages and disadvantages of its implementation. Of course, answering that it is because the subject asks
   for it does not count.
-- 마지막으로, 평가 대상 학생에게 비밀번호 정책의 장점과 구현의 단점을 설명하도록 요청합니다.
+- 마지막으로, 평가 대상 학생에게 비밀번호 정책의 장점과 구현의 장점을 설명하도록 요청합니다.
   물론 주체가 요구하기 때문이라고 대답하는 것은 중요하지 않다.
 - If something does not work as expected or is not clearly explained, the evaluation stops here.
 
@@ -271,7 +269,7 @@ Hostname and partitions
 - 호스트이름을 바꾸고 (아무거나 바꾸라는건지 ?) 다시 시작했을때 호스트이름이 바뀌어야한다.
 
 - You can now restore the machine to the original hostname.
-- 이제 시스템을 원래 호스트 이름으로 복원할수있다 (꼭해야하는건가 ?)
+- 이제 시스템을 원래 호스트 이름으로 복원할수있다
 - Ask the student being evaluated how to view the partitions for this virtual machine.
 - Compare the output with the example given in the subject. Please note: if the
   student evaluated makes the bonuses, it will be necessary to refer to the bonus example.
@@ -337,7 +335,6 @@ SSH
 - SSH 서비스가 포트 4242만 사용하는지 확인합니다.
 - The student being evaluated should help you use SSH in order to log in with the newly created user.
 - 평가 중인 학생은 SSH를 사용하여 새로 만든 사용자로 로그인하는 데 도움이 됩니다.
-- ????
 - To do this, you can use a key or a simple password. It will depend on the student being evaluated.
 - 이렇게 하려면 키나 간단한 암호를 사용하면 됩니다. 그것은 평가받는 학생에 따라 달라질 것입니다.
 - Of course, you have to make sure that you cannot use SSH with the "root" user as stated in the subject.
@@ -363,7 +360,7 @@ The student being evaluated should explain to you simply:
 - 매분 마다 실행이 잘되는지 확인해 볼것
 - You can run whatever you want to make sure the script runs with dynamic values correctly.
 - Finally, the student being evaluated should make the script stop running when the server has started up, but without modifying the script itself.
-- 마지막으로 평가 중인 학생은 서버가 시작될 때 스크립트 자체를 수정하지 않고 스크립트 실행을 중지해야 합니다. 이게무슨말 ?
+- 마지막으로 평가 중인 학생은 서버가 시작될 때 스크립트 자체를 수정하지 않고 스크립트 실행을 중지해야 합니다.
 - To check this point, you will have to restart the server one last time. At startup, it will be necessary to check that the script still exists in the same place, that its rights have remained unchanged, and that it has not been modified.
 - 이 점을 확인하려면 서버를 마지막으로 재시작해야 합니다. 시작할 때 스크립트가 여전히 같은 장소에 존재하는지, 스크립트의 권한이 변경되지 않았는지, 수정되지 않았는지 확인해야 합니다.
 - If something does not work as expected or is not clearly explained, the evaluation stops here.
