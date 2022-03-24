@@ -364,3 +364,5 @@ The student being evaluated should explain to you simply:
 - To check this point, you will have to restart the server one last time. At startup, it will be necessary to check that the script still exists in the same place, that its rights have remained unchanged, and that it has not been modified.
 - 이 점을 확인하려면 서버를 마지막으로 재시작해야 합니다. 시작할 때 스크립트가 여전히 같은 장소에 존재하는지, 스크립트의 권한이 변경되지 않았는지, 수정되지 않았는지 확인해야 합니다.
 - If something does not work as expected or is not clearly explained, the evaluation stops here.
+
+본투비 평가 끝
