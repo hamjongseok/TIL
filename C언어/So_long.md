@@ -7,7 +7,7 @@
 - 출발점에서 시작해서 아이템을 먹고 도착점까지 최소한으로 ????가는 게임 만들기❌
 - 캐릭터가 움직일 때마다 움직인 횟수가 쉘에 기록되어야 한다❌
 - W A S D로 캐릭터 이동❌
-- ESC 누르면 창이 닫히고 프로그램 종료❌
+- ESC 누르면 창이 닫히고 프로그램 종료 ⭕️
 
   - wasd와 esc 그리고 창 상단의 종료 버튼에 기능을 어떻게 부여하는가
   - miniLibX에 key를 hook 할 수 있는 기능이 있다. 해당 키에 기능을 부여하면 됨
@@ -89,6 +89,63 @@ return value : no return
 ```
 
 - 마지막에 이걸 쳐줘야 프로그램이 종료하지 않고 계속 돌아간다.
+
+## 키 Hook
+
+```
+int mlx_hook(void *win_ptr, int x_event, int x_mask, int (*func)(), void *param)
+
+윈도우 식별자
+X11 event
+x_mask(mac에선 미사용으로 0 입력)
+호출할 함수 포인터(눌린 키와 창에서 눌린 좌표 등이 전달됨)
+함수에 전달할 파라미터를 인자로 받는 함수
+
+```
+
+MAC OS의 키보드 코드이다.
+
+```c
+#define X_EVENT_KEY_PRESS 2 // mlx_hook 함수의 두번째 인자
+#define X_EVENT_KEY_RELEASE 3 // x_event에 들어가는 값
+
+#define KEY_W 13
+#define KEY_A 0
+#define KEY_S 1
+#define KEY_D 2
+#define KEY_ESC 53 // MAC OS의 키보드 코드 들이다.
+
+
+typedef struct  s_param // 키 값은 입력받고 정해진 동작을 수행했는지 여부를 판단하기 위해 선언
+{
+    int x; //x값
+    int y; //y값
+}   t_param;
+
+void param_init(t_param *param) // 구조체 param 초기화 함수
+{
+    param->x = 0;
+    param->y = 0;
+}
+
+int key_press(int keycode, t_param *param) //어떤키 눌렸는지 판단하고, 정의된 행동을 수행하는 함수
+{
+    if (keycode == KEY_W) // W 키를 누르면 param.x값이 1 증가입니다.
+        param->x++;
+    else if (keycode == KEY_S) // S 키를 누르면 param.x값이 1 감소입니다.
+        param->x--;
+    else if (keycode == KEY_A) // A 키를 누르면 param.y 값이 1 증가한다.
+        param->y++;
+    else if (keycode == KEY_D) // D 키를 누르면 param.y값이 1 감소한다.
+        param->y--;
+    else if (keycode == KEY_ESC) //ESC키를 누르면 프로그램 종료
+        exit(0);
+    printf("(x,y): (%d, %d)\n", param->x, param->y); //param의 값 확인
+    return (0);
+}
+
+여기서 왜 W에는 x를 더하고 S는 빼고 A는 더하고 D는 y를 빼는지 모르겠음
+```
 
 ---
 
