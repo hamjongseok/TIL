@@ -173,6 +173,21 @@ x11 events:
 - xpm확장자로 변환후 mlx함수를 이용해서 맵에 띄운다.
 - mlx_xpm_file_to_image와 mlx_put_image_to_window 을 활용
 
+```c
+
+  img = mlx_xpm_file_to_image(mlx_ptr, "./images/wall.xpm", &img_width, &img_height);
+
+  mlx포인터, 파일 주소, 가로 세로 크기를 가져와서 메모리에 올리고 해당 메모리의 주소를 반환한다
+
+  mlx_put_image_to_window(mlx_ptr, win_ptr, img, 0, 0);
+
+  이미지를 받아서 띄울 포인터들을 인자로 받고 윈도우 안에서의 좌표를 지정해서 해당 윈도우에 띄워준다
+
+
+
+
+```
+
 ---
 
 ## 맵, .ber형식 파일
