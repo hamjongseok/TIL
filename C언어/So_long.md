@@ -107,7 +107,7 @@ MAC OS의 키보드 코드이다.
 
 ```c
 #define X_EVENT_KEY_PRESS 2 // mlx_hook 함수의 두번째 인자
-#define X_EVENT_KEY_RELEASE 3 // x_event에 들어가는 값
+#define X_EVENT_KEY_RELEASE 3 // x_event에 들어가는 값 , 이게 왜있어야 하는지 모르겠다.
 
 #define KEY_W 13
 #define KEY_A 0
@@ -145,6 +145,21 @@ int key_press(int keycode, t_param *param) //어떤키 눌렸는지 판단하고
 }
 
 여기서 왜 W에는 x를 더하고 S는 빼고 A는 더하고 D는 y를 빼는지 모르겠음
+
+2차원 배열 특성때매 W랑 s를 y로 두면 좌우로 갔던거같다.
+알아보기 ❌❌❌❌❌❌
+```
+
+```c
+
+#define X_EVENT_KEY_PRESS 2 // mlx_hook 함수의 두번째 인자
+#define X_EVENT_KEY_RELEASE 3
+
+x_event에 X11 events라고 mlx에 등록된 이벤트의 번호다. 번호에 대응되는 이벤트를 후킹한다.
+
+x11 events:
+02: KeyPress
+03: KeyRelease
 ```
 
 ---
