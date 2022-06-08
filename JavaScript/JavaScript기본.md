@@ -108,3 +108,73 @@ alert(0 === -0) //true
 !==는 !=와 ==의 관계는 같다
 정확하게 같지 않다는 의미이다.
 ```
+
+---
+
+## 함수
+
+함수(function)이란 ?
+
+하나의 로직을 재실행 할수 있도록 하는것으로 코드의 재사용성을 높여준다.
+
+함수의 형식
+
+```js
+
+function 함수명 ([인자 ...[, 인자]]){
+
+	코드
+
+	return (반환값);
+}
+
+예시
+
+<script>
+      function numbering() {
+        document.write(1);
+      } //함수 정의
+      numbering();
+</script>
+
+```
+
+## 입력함수
+
+JavaScript 의 입력함수
+
+- prompt()
+  - 함수는 사용자에게 윈도우 창을 띄워 데이터를 입력받을 수 있는 함수
+
+```js
+<script>var a = prompt(); document.write(a);</script>;
+
+prompt("윈도우창", "입력창");
+```
+
+## 출력함수
+
+JavaScript 의 출력함수
+
+```js
+
+
+alert("확인을 누를 때까지 다른 작업을 할 수 없어요!");
+
+window.alert() 메소드는 브라우저와는 별도의 대화 상자를 띄워 사용자에게 데이터를 전달해준다.
+
+
+
+document.write('hello <br />');
+
+document.write() 메소드는 웹 페이지가 로딩될 때 실행되면, 웹 페이지에 가장 먼저 데이터를 출력한다.
+
+따라서 document.write() 메소드는 대부분 테스트나 디버깅을 위해 사용된다.
+
+
+
+console.log(4 * 5);
+
+웹 브라우저의 콘솔을 통해 데이터를 출력
+
+```
