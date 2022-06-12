@@ -137,6 +137,29 @@ function 함수명 ([인자 ...[, 인자]]){
       numbering();
 </script>
 
+
+다른 함수 선언방법
+
+numbering = function(){
+	i = 0;
+	while (i < 10){
+		dounment.write(i);
+		i += 1;
+	}
+}
+
+
+(function(){
+	i = 0;
+	while (i < 10){
+		dounment.write(i);
+		i += 1;
+	}
+})();
+
+-> 함수 정의하고 바로 호출이 가능.
+이는 익명함수라고 한다. (일회성 인경우 이렇게 사용하기도한다.)
+
 ```
 
 ## 입력함수
