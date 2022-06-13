@@ -245,4 +245,25 @@ splice 함수
 (필요할때 찾아보기)
 
 
+제거 함수
+shift
+
+var li = ['a', 'b', 'c', 'd'];
+
+li.shift();
+
+-> a 제거된다.
+
+li.pop();
+-> d , 마지막원소 제거
+
+
+정렬함수
+
+li.sort();
+
+역순 정렬
+li.reverse();
+
+
 ```
