@@ -267,3 +267,20 @@ li.reverse();
 
 
 ```
+
+---
+
+## Head
+
+```js
+c언어에서의 헤더파일 include부분을 js에서는 어떻게 하나 생각했었는데
+
+ <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<script src="gree.js"></script>
+    <title>Document</title>
+  </head>
+
+  html 헤더파일에 src 속성을 사용해서 include 시켜주면되었다.
+```
